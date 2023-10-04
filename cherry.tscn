@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3vw0tlvrxpip"]
+
+[ext_resource type="Script" path="res://Cherry.gd" id="1_1tywm"]
+[ext_resource type="Texture2D" uid="uid://bm10r0cot23fx" path="res://icon.svg" id="2_ilg6g"]
+[ext_resource type="Texture2D" uid="uid://co0103k7lgbbt" path="res://Cherry_Idle_Anim.png" id="2_tqgnf"]
+[ext_resource type="Texture2D" uid="uid://si5374upcnf8" path="res://Cherry_Run_Anim.png" id="3_yvre7"]
+
+[sub_resource type="Animation" id="Animation_380aa"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Idle:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tqgnf")]
+}
+
+[sub_resource type="Animation" id="Animation_5xac4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Idle:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tqgnf")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Idle:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_77kem"]
+resource_name = "Run"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Idle:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Idle:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_yvre7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lm1ld"]
+_data = {
+"Idle": SubResource("Animation_380aa"),
+"RESET": SubResource("Animation_5xac4"),
+"Run": SubResource("Animation_77kem")
+}
+
+[node name="Cherry" type="CharacterBody2D"]
+script = ExtResource("1_1tywm")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -100
+position = Vector2(28.4853, 140.485)
+scale = Vector2(0.875, 0.275888)
+skew = -0.785398
+emitting = false
+amount = 10
+lifetime = 0.5
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 32.0
+direction = Vector2(-1, 0)
+gravity = Vector2(0, 0)
+initial_velocity_max = 197.08
+scale_amount_min = 0.0
+scale_amount_max = 15.0
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.235294)
+position = Vector2(28.4853, 140.485)
+scale = Vector2(0.875, 0.275888)
+skew = -0.785398
+texture = ExtResource("2_ilg6g")
+
+[node name="Idle" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_tqgnf")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lm1ld")
+}
